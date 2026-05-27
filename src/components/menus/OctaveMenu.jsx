@@ -3,6 +3,7 @@ import TurnYourDeviceMessage from "../TurnYourDeviceMessageLandscape";
 import Dropdown from '../Dropdown';
 import { useEffect } from 'react';
 import Footer from '../Footer';
+import LearnTheoryButton from '../LearnTheoryButton';
 
 if (!localStorage.getItem("lang")) {
   localStorage.setItem("lang", "english");
@@ -66,6 +67,9 @@ export default function OctaveMenu() {
           search: '?octave=great&lang=' + language
         }} className="btn btn-red btn-menu"><p style={{ position: "absolute" }}>&#119074;</p>{language == "english" ? "Great octave" : "Большая октава"}<div></div></Link>
       </span>
+      {/*
+      <LearnTheoryButton />
+      */}
     </>
   );
 }
