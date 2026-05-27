@@ -13,7 +13,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
-  base: "/musicentric-v2/",
+  base: "/maestrocat/",
   build: {
     outDir: "docs",
   },

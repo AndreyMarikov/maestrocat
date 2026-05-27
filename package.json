@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.5",
   "type": "module",
-  "homepage": "https://andreymarikov.github.io/musicentric-v2/",
+  "homepage": "https://andreymarikov.github.io/maestrocat/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
