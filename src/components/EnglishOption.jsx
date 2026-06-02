@@ -14,10 +14,10 @@ function EnglishOption() {
       setSearchParams({ lang: "english" }, { replace: true });
     }
 
-    option.addEventListener("click", setLanguageToEnglish);
+    option.addEventListener("pointerdown", setLanguageToEnglish);
 
     return () => {
-      option.removeEventListener("click", setLanguageToEnglish);
+      option.removeEventListener("pointerdown", setLanguageToEnglish);
     };
   }, []);
 

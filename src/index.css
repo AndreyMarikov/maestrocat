@@ -57,7 +57,7 @@ body {
   background-image: url("./assets/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: var(--white);
+  background-color: var(--white) !important;
 }
 
 h1 {
@@ -458,6 +458,7 @@ h2 {
   margin-top: 8px;
   margin-bottom: 8px;
   font-family: "Rubik";
+  align-items: center;
 }
 
 .btn:active {
@@ -642,6 +643,11 @@ h2 {
   margin-bottom: 20px;
 }
 
+#staff-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .key-white:first-child {
   border-left: 3px solid hsl(0, 0%, 87.5%);
 }
@@ -667,7 +673,8 @@ h2 {
 }
 
 #staff {
-  width: 100%;
+  width: 421px;
+  height: fit-content;
 }
 
 .wdf {
@@ -772,7 +779,11 @@ h2 {
 
 .cat-image {
   width: auto;
-  height: 500px;
+  height: 300px;
+}
+
+#staff-wrapper {
+  justify-content: center;
 }
 
 @media (max-height: 700px) {
@@ -1054,9 +1065,7 @@ h2 {
     left: 57%;
   }
 
-  body {
-    padding: 0;
-  }
+
 
   .cat-image {
     width: auto;
@@ -1087,6 +1096,34 @@ h2 {
   }
 }
 
+@media screen and (min-height: 700px) and (max-height: 750px) {
+  .ledger-line {
+    translate: 34px;
+  }
+
+  .sharp-symbol,
+  .flat-symbol {
+    translate: 75%;
+  }
+
+  .double-sharp-symbol {
+    transform: translate(-10px, 8px) scale(1.6) !important;
+  }
+
+  .double-flat-symbol {
+    transform: translate(40px, -45%) scale(1.5) !important;
+  }
+
+  #btns .btn {
+    font-size: 40px;
+    height: 100px;
+  }
+
+  #btns {
+    translate: 0 50px;
+  }
+}
+
 @media (max-height: 580px) {
   .cat-image {
     height: 300px;
@@ -1098,6 +1135,11 @@ h2 {
 
   .message {
     left: 110%;
+  }
+
+  #btns .btn {
+    height: 70px !important;
+    font-size: 30px !important;
   }
 }
 
@@ -1123,12 +1165,15 @@ h2 {
     left: 140%;
     top: -5%;
   }
+
+  .ledger-line {
+    translate: -4px !important;
+  }
 }
 
 @media (max-height: 430px) {
   .cat-image {
     height: 182px;
-    ;
   }
 
   .message {
@@ -1157,6 +1202,23 @@ h2 {
 
   .message {
     top: -24px;
+  }
+
+  .ledger-line {
+    transform: translateX(-9px) !important;
+  }
+}
+
+@media (max-height: 330px) {
+  #btns .btn {
+    height: 50px !important;
+    font-size: 28px !important;
+    padding: 8px;
+    padding-inline: 16px;
+  }
+
+  #btns {
+    bottom: -20px !important;
   }
 }
 
@@ -1232,9 +1294,23 @@ h2 {
     display: flex;
     height: 100%;
   }
+
+  #btns .btn {
+    font-size: 40px;
+    height: 100px;
+  }
+
+  #btns {
+    translate: 0 30px;
+  }
 }
 
-@media (min-height: 950px) {
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-height: 750px) {
   #menu-btns {
     border-radius: 32px;
     max-width: 450px !important;
@@ -1244,17 +1320,78 @@ h2 {
     margin: 0;
   }
 
-  body {
-    background-position-y: 25%;
-  }
-
   body>#root {
     padding: 32px;
     justify-content: center !important;
   }
 
+  body,
+  #root {
+    background-image: url("./assets/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+  }
+
+  .wrapper {
+    padding: 32px;
+    padding-bottom: 16px;
+    background-color: var(--white);
+    border-radius: 32px;
+    width: 900px;
+    height: 700px;
+    position: relative;
+  }
+
+  #staff-wrapper {
+    position: absolute;
+    min-width: fit-content;
+    top: 100px;
+  }
+
+  #keyboard,
+  #btn-start,
+  #btns {
+    position: relative;
+    top: 200px;
+  }
+
+  header {
+    position: absolute;
+    padding-block: 8px;
+    padding-inline: 24px;
+  }
+
   h1 {
-    z-index: -1;
+    z-index: 9;
+  }
+
+  .sharp-symbol,
+  .flat-symbol {
+    translate: 100%;
+  }
+
+  .message {
+    translate: 0 -100%;
+  }
+
+  .double-flat-symbol {
+    translate: 300% 30%;
+    scale: 1.5;
+  }
+
+  .double-sharp-symbol {
+    transform: translate(0, 5px);
+    scale: 1.7;
+  }
+
+  .ledger-line {
+    transform: translate(28px) !important;
+  }
+
+  #btns .btn {
+    font-size: 44px;
+    height: 100px;
   }
 }
 
@@ -1315,6 +1452,10 @@ h2:last-child {
   justify-content: center;
   align-items: center;
   padding: 16px;
+}
+
+#timer {
+  color: var(--gray30);
 }
 
 .rocket {

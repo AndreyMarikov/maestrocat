@@ -38,7 +38,7 @@ export default function NoteNotationMenu() {
             justify-content: end !important;
           }
 
-          @media (min-height: 950px) {
+          @media (min-height: 750px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -49,9 +49,9 @@ export default function NoteNotationMenu() {
       <TurnYourDeviceMessage />
       <Dropdown />
       <span id='menu-btns' className='center'>
-        <h1>{language == "russian" ? "Выберите обозначение нот" : "Choose notation system"}</h1>
-        <Link to={getPath() + '?mode=warm-up&note-notation=c-d-e&lang=' + language} className='btn btn-cyan btn-menu'>C-D-E</Link>
-        <Link to={getPath() + '?mode=warm-up&note-notation=do-re-mi&lang=' + language} className='btn btn-orange btn-menu'>{language == "russian" ? "до-ре-ми" : "do-re-mi"}</Link>
+        <h1>{language == "russian" ? "Выберите обозначение нот" : "Choose note names"}</h1>
+        <Link to={getPath() + '?mode=warm-up&note-notation=c-d-e&lang=' + language} className='btn btn-cyan btn-menu'>{language == "english" ? "Letters (C D E)" : "c-d-e"}</Link>
+        <Link to={getPath() + '?mode=warm-up&note-notation=do-re-mi&lang=' + language} className='btn btn-orange btn-menu'>{language == "russian" ? "до-ре-ми" : "fixed do (do = c)"}</Link>
         <ExitButton />
       </span>
     </>

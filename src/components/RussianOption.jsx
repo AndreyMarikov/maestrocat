@@ -14,10 +14,10 @@ function RussianOption() {
       setSearchParams({ lang: "russian" }, { replace: true });
     }
 
-    option.addEventListener("click", setLanguageToRussian);
+    option.addEventListener("pointerdown", setLanguageToRussian);
 
     return () => {
-      option.removeEventListener("click", setLanguageToRussian);
+      option.removeEventListener("pointerdown", setLanguageToRussian);
     };
   }, []);
 

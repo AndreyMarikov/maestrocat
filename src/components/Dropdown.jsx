@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import FlagOfRussia from "../assets/Flag_of_Russia.svg";
 import FlagOfUK from "../assets/Flag_of_UK.svg";
 import { useSearchParams } from "react-router-dom";
@@ -8,24 +8,27 @@ import RussianOption from "./RussianOption";
 function Dropdown() {
   const dropDownMenuRef = useRef(null);
   const caretIconRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
   const [searchParams] = useSearchParams();
   const language = searchParams.get('lang');
 
-  function handleFocus() {
+  function openMenu() {
     dropDownMenuRef.current.style.visibility = "visible";
     dropDownMenuRef.current.style.rotate = "x 0deg";
     dropDownMenuRef.current.style.opacity = 1;
     caretIconRef.current.style.transform = "rotate(-180deg)";
+    setOpen(true);
   }
 
-  function handleBlur() {
+  function closeMenu() {
     dropDownMenuRef.current.style.opacity = 0;
     dropDownMenuRef.current.style.rotate = "x 90deg";
     caretIconRef.current.style.transform = "rotate(0deg)";
     setTimeout(() => {
       dropDownMenuRef.current.style.visibility = "hidden";
     }, 200);
+    setOpen(false);
   }
 
   return (
@@ -46,13 +49,6 @@ function Dropdown() {
             gap: 8px;
             align-items: center;
             background: transparent;
-          }
-
-          .bi-translate {
-            background-image: linear-gradient(to bottom right, hsl(290, 100%, 50%), hsl(39, 100%, 50%));
-            background-clip: text;
-            color: transparent;
-            font-size: 32px;
           }
 
           .bi-caret-down-fill {
@@ -113,7 +109,7 @@ function Dropdown() {
         `}
       </style>
       <div className='dropdown'>
-        <button className="dropdown-button" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="dropdown-button" onFocus={openMenu} onBlur={closeMenu}>
           <img src={language == "russian" ? FlagOfRussia : FlagOfUK} className='flag'></img>
           <p style={{ fontFamily: "Rubik" }}>{language == "russian" ? "Русский" : "English"}</p>
           <i ref={caretIconRef} className='bi bi-caret-down-fill' style={{ fontSize: 16 + "px" }}></i>

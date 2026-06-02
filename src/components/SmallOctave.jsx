@@ -443,259 +443,258 @@ export default function SmallOctavePage() {
     <>
       <style>
         {`
-          @media (max-height: 635px) {
-            body {
-              background-image: none;
-            }
+          body {
+            background-image: none;
           }
         `}
       </style>
       <TurnYourDeviceMessage />
       <span ref={timeIsUpMessageRef} className='hidden warning-message center'>
         <span style={{ position: "fixed", top: 0, gap: 24 + "px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <h1 style={{ position: "static" }}>{language == "russian" ? "Время вышло" : "Time is up"}!</h1>
-        <span>
-        
-        <Link to='/' className='btn btn-orange' style={{ bottom: 44 + 8 + "px", width: 240 + "px" }}>{language == "russian" ? "Вернуться в меню" : "Go back to menu"}</Link>
-        <span id='answers' style={{ position: "fixed", bottom: 0, left: 0, width: 100 + "%" }}>
-        <h2 style={{ marginBottom: 0 }}>{language == "russian" ? "Правильных ответов" : "Correct answers"}: {correctAnswersRef.current}</h2>
-        <h2>{language == "russian" ? "Неправильных ответов" : "Incorrect answers"}: {incorrectAnswersRef.current}</h2>
-        </span>
-        </span>
+          <h1 style={{ position: "static", width: "100%" }}>{language == "russian" ? "Время вышло" : "Time is up"}!</h1>
+          <span>
+
+            <Link to='/' className='btn btn-orange' style={{ bottom: 44 + 8 + "px", width: 240 + "px" }}>{language == "russian" ? "Вернуться в меню" : "Go back to menu"}</Link>
+            <span id='answers' style={{ position: "fixed", bottom: 0, left: 0, width: 100 + "%" }}>
+              <h2 style={{ marginBottom: 0 }}>{language == "russian" ? "Правильных ответов" : "Correct answers"}: {correctAnswersRef.current}</h2>
+              <h2>{language == "russian" ? "Неправильных ответов" : "Incorrect answers"}: {incorrectAnswersRef.current}</h2>
+            </span>
+          </span>
         </span>
       </span>
       <link rel='stylesheet' href='octave.css'></link>
-      <header>
-        <Link to='/' title='Вернуться в меню'>
-          <i className='bi bi-arrow-left center'></i>
-        </Link>
-        <span id='hearts' className='center'>
-        </span>
-        {!showBtns && <span>
-          <p ref={timerRef} id='timer' className='center'>
-            1:00
-          </p>
-        </span>}
-      </header>
-      <span className='center' id='staff-wrapper' style={{ position: (mode === "warm-up" && "relative"), bottom: (mode === "warm-up" && 32 + "px") }}>
-        <span style={{ "position": "relative" }}>
-          <img className="cat-image" src={Kitya}></img>
-          <span ref={oopsMessageRef} className='message center hidden' id='message1'>
-            {language == "russian" ? "Упс" : "Whoops"}...
+      <span className='center wrapper' style={{ position: (mode === "warm-up" && "relative"), bottom: (mode === "warm-up" && 32 + "px") }}>
+        <header>
+          <Link to='/' title='Вернуться в меню'>
+            <i className='bi bi-arrow-left center'></i>
+          </Link>
+          <span id='hearts' className='center'>
           </span>
-          <span ref={goodJobMessageRef} className='message center hidden' id='message2'>
-            {language == "russian" ? "Так держать" : "Keep it up"}!
+          {!showBtns && <span>
+            <p ref={timerRef} id='timer' className='center'>
+              1:00
+            </p>
+          </span>}
+        </header>
+        <span className='center' id='staff-wrapper'>
+          <span style={{ "position": "relative" }}>
+            <img className="cat-image" src={Kitya}></img>
+            <span ref={oopsMessageRef} className='message center hidden' id='message1'>
+              {language == "russian" ? "Упс" : "Whoops"}...
+            </span>
+            <span ref={goodJobMessageRef} className='message center hidden' id='message2'>
+              {language == "russian" ? "Так держать" : "Keep it up"}!
+            </span>
+            <span ref={wellDoneMessageRef} className='message center hidden' id='message3'>
+              {language == "russian" ? "Молодец" : "Well done"}!
+            </span>
           </span>
-          <span ref={wellDoneMessageRef} className='message center hidden' id='message3'>
-            {language == "russian" ? "Молодец" : "Well done"}!
+          <span id='staff'>
+            <BassClef />
+            <img ref={cNoteRef} src={WholeNote} className='hidden note c3'></img>
+            <img ref={dNoteRef} src={WholeNote} className='hidden note d3'></img>
+            <img ref={eNoteRef} src={WholeNote} className='hidden note e3'></img>
+            <img ref={fNoteRef} src={WholeNote} className='hidden note f3'></img>
+            <img ref={gNoteRef} src={WholeNote} className='hidden note g3'></img>
+            <img ref={aNoteRef} src={WholeNote} className='hidden note a3'></img>
+            <img ref={bNoteRef} src={WholeNote} className='hidden note b3'></img>
+            <img ref={cSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol c3'></img>
+            <img ref={dSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol d3'></img>
+            <img ref={eSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol e3'></img>
+            <img ref={fSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol f3'></img>
+            <img ref={gSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol g3'></img>
+            <img ref={aSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol a3'></img>
+            <img ref={bSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol b3'></img>
+            <img ref={cFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol c3'></img>
+            <img ref={dFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol d3'></img>
+            <img ref={eFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol e3'></img>
+            <img ref={fFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol f3'></img>
+            <img ref={gFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol g3'></img>
+            <img ref={aFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol a3'></img>
+            <img ref={bFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol b3'></img>
+            <img ref={cDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol c3'></img>
+            <img ref={dDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol d3'></img>
+            <img ref={eDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol e3'></img>
+            <img ref={fDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol f3'></img>
+            <img ref={gDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol g3'></img>
+            <img ref={aDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol a3'></img>
+            <img ref={bDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol b3'></img>
+            <img ref={cDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol c3'></img>
+            <img ref={dDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol d3'></img>
+            <img ref={eDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol e3'></img>
+            <img ref={fDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol f3'></img>
+            <img ref={gDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol g3'></img>
+            <img ref={aDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol a3'></img>
+            <img ref={bDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol b3'></img>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
+            <hr></hr>
           </span>
         </span>
-        <span id='staff'>
-          <BassClef />
-          <img ref={cNoteRef} src={WholeNote} className='hidden note c3'></img>
-          <img ref={dNoteRef} src={WholeNote} className='hidden note d3'></img>
-          <img ref={eNoteRef} src={WholeNote} className='hidden note e3'></img>
-          <img ref={fNoteRef} src={WholeNote} className='hidden note f3'></img>
-          <img ref={gNoteRef} src={WholeNote} className='hidden note g3'></img>
-          <img ref={aNoteRef} src={WholeNote} className='hidden note a3'></img>
-          <img ref={bNoteRef} src={WholeNote} className='hidden note b3'></img>
-          <img ref={cSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol c3'></img>
-          <img ref={dSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol d3'></img>
-          <img ref={eSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol e3'></img>
-          <img ref={fSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol f3'></img>
-          <img ref={gSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol g3'></img>
-          <img ref={aSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol a3'></img>
-          <img ref={bSharpSymbolRef} src={SharpSymbol} className='hidden sharp-symbol b3'></img>
-          <img ref={cFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol c3'></img>
-          <img ref={dFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol d3'></img>
-          <img ref={eFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol e3'></img>
-          <img ref={fFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol f3'></img>
-          <img ref={gFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol g3'></img>
-          <img ref={aFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol a3'></img>
-          <img ref={bFlatSymbolRef} src={FlatSymbol} className='hidden flat-symbol b3'></img>
-          <img ref={cDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol c3'></img>
-          <img ref={dDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol d3'></img>
-          <img ref={eDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol e3'></img>
-          <img ref={fDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol f3'></img>
-          <img ref={gDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol g3'></img>
-          <img ref={aDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol a3'></img>
-          <img ref={bDoubleSharpSymbolRef} src={DoubleSharpSymbol} className='hidden double-sharp-symbol b3'></img>
-          <img ref={cDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol c3'></img>
-          <img ref={dDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol d3'></img>
-          <img ref={eDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol e3'></img>
-          <img ref={fDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol f3'></img>
-          <img ref={gDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol g3'></img>
-          <img ref={aDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol a3'></img>
-          <img ref={bDoubleFlatSymbolRef} src={DoubleFlatSymbol} className='hidden double-flat-symbol b3'></img>
-          <hr></hr>
-          <hr></hr>
-          <hr></hr>
-          <hr></hr>
-        </span>
-      </span>
-
-      {
-        showBtns ? <span ref={btnsRef} className='hidden center' id='btns'>
-          <button onClick={function () {
-            clickedKey = 'C4';
-            handleClick();
-            playSound(C3);
-          }} className='center btn btn-red'>{noteNotation == 'c-d-e' ? 'C' : (language == "russian" ? "до" : "do")}</button>
-          <button onClick={function () {
-            clickedKey = 'D4';
-            handleClick();
-            playSound(D3);
-          }} className='center btn btn-orange'>{noteNotation == 'c-d-e' ? 'D' : (language == "russian" ? "ре" : "re")}</button>
-          <button onClick={function () {
-            clickedKey = 'E4';
-            handleClick();
-            playSound(E);
-          }} className='center btn btn-yellow'>{noteNotation == 'c-d-e' ? 'E' : (language == "russian" ? "ми" : "mi")}</button>
-          <button onClick={function () {
-            clickedKey = 'F4';
-            handleClick();
-            playSound(F);
-          }} className='center btn btn-green'>{noteNotation == 'c-d-e' ? 'F' : (language == "russian" ? "фа" : "fa")}</button>
-          <button onClick={function () {
-            clickedKey = 'G4';
-            handleClick();
-            playSound(G);
-          }} className='center btn btn-cyan'>{noteNotation == 'c-d-e' ? 'G' : (language == "russian" ? "соль" : "sol")}</button>
-          <button onClick={function () {
-            clickedKey = 'A4';
-            handleClick();
-            playSound(A3);
-          }} className='center btn btn-blue'>{noteNotation == 'c-d-e' ? 'A' : (language == "russian" ? "ля" : "la")}</button>
-          <button onClick={function () {
-            clickedKey = 'B4';
-            handleClick();
-            playSound(B3);
-          }} className='center btn btn-purple'>{noteNotation == 'c-d-e' ? 'B' : (language == "russian" ? "си" : "ti")}</button>
-        </span> : <span ref={keyboardRef} className='hidden center' id='keyboard' style={{ left: ((mode != "with-double-sharps-and-double-flats" && mode != "with-sharps" && mode != undefined) ? 76 : 0) / 2 + "px" }}>
-          <span id='white-keys' style={{ position: mode == "with-double-sharps-and-double-flats" && "relative", right: mode == "with-double-sharps-and-double-flats" && -70 + "px" }}>
-            {mode == 'with-double-sharps-and-double-flats' &&
-              <button onMouseDown={function () {
-                playSound(A2);
-                clickedKey = 'A3';
-                handleClick();
-              }} className='key-white' id='key-a-prev-octave'></button>}
-            {(mode == 'white-and-black-keys' || mode == 'with-flats' || mode == 'with-sharps-and-flats' || mode == 'with-double-sharps-and-double-flats') &&
-              <button id='key-b2' onMouseDown={function () {
-                playSound(B2);
-                clickedKey = 'B3';
-                handleClick();
-              }} className='key-white'></button>}
-            <button onMouseDown={function () {
-              playSound(C3);
+        {
+          showBtns ? <span ref={btnsRef} className='hidden center' id='btns'>
+            <button onClick={function () {
               clickedKey = 'C4';
-              console.log(showedNote, clickedKey)
               handleClick();
-              console.log(showedNote, clickedKey)
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(D3);
+              playSound(C3);
+            }} className='center btn btn-red'>{noteNotation == 'c-d-e' ? 'C' : (language == "russian" ? "до" : "do")}</button>
+            <button onClick={function () {
               clickedKey = 'D4';
               handleClick();
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(E);
+              playSound(D3);
+            }} className='center btn btn-orange'>{noteNotation == 'c-d-e' ? 'D' : (language == "russian" ? "ре" : "re")}</button>
+            <button onClick={function () {
               clickedKey = 'E4';
               handleClick();
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(F);
+              playSound(E);
+            }} className='center btn btn-yellow'>{noteNotation == 'c-d-e' ? 'E' : (language == "russian" ? "ми" : "mi")}</button>
+            <button onClick={function () {
               clickedKey = 'F4';
               handleClick();
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(G);
+              playSound(F);
+            }} className='center btn btn-green'>{noteNotation == 'c-d-e' ? 'F' : (language == "russian" ? "фа" : "fa")}</button>
+            <button onClick={function () {
               clickedKey = 'G4';
               handleClick();
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(A3);
+              playSound(G);
+            }} className='center btn btn-cyan'>{noteNotation == 'c-d-e' ? 'G' : (language == "russian" ? "соль" : "sol")}</button>
+            <button onClick={function () {
               clickedKey = 'A4';
               handleClick();
-            }} className='key key-white'></button>
-            <button onMouseDown={function () {
-              playSound(B3);
+              playSound(A3);
+            }} className='center btn btn-blue'>{noteNotation == 'c-d-e' ? 'A' : (language == "russian" ? "ля" : "la")}</button>
+            <button onClick={function () {
               clickedKey = 'B4';
               handleClick();
-            }} className='key key-white'></button>
-            {(mode == 'white-and-black-keys' || mode == 'with-sharps' || mode == 'with-sharps-and-flats' || mode == 'with-double-sharps-and-double-flats') &&
+              playSound(B3);
+            }} className='center btn btn-purple'>{noteNotation == 'c-d-e' ? 'B' : (language == "russian" ? "си" : "ti")}</button>
+          </span> : <span ref={keyboardRef} className='hidden center' id='keyboard' style={{ left: ((mode != "with-double-sharps-and-double-flats" && mode != "with-sharps" && mode != undefined) ? 76 : 0) / 2 + "px" }}>
+            <span id='white-keys' style={{ position: mode == "with-double-sharps-and-double-flats" && "relative", right: mode == "with-double-sharps-and-double-flats" && -70 + "px" }}>
+              {mode == 'with-double-sharps-and-double-flats' &&
+                <button onMouseDown={function () {
+                  playSound(A2);
+                  clickedKey = 'A3';
+                  handleClick();
+                }} className='key-white' id='key-a-prev-octave'></button>}
+              {(mode == 'white-and-black-keys' || mode == 'with-flats' || mode == 'with-sharps-and-flats' || mode == 'with-double-sharps-and-double-flats') &&
+                <button id='key-b2' onMouseDown={function () {
+                  playSound(B2);
+                  clickedKey = 'B3';
+                  handleClick();
+                }} className='key-white'></button>}
               <button onMouseDown={function () {
-                playSound(C4);
-                clickedKey = 'C5';
+                playSound(C3);
+                clickedKey = 'C4';
+                console.log(showedNote, clickedKey)
                 handleClick();
-              }} className='key-white'></button>}
-            {mode == 'with-double-sharps-and-double-flats' &&
+                console.log(showedNote, clickedKey)
+              }} className='key key-white'></button>
               <button onMouseDown={function () {
-                playSound(D4);
-                clickedKey = 'D5';
+                playSound(D3);
+                clickedKey = 'D4';
                 handleClick();
-              }} className='key-white' id='key-d-next-octave'></button>}
-          </span>
+              }} className='key key-white'></button>
+              <button onMouseDown={function () {
+                playSound(E);
+                clickedKey = 'E4';
+                handleClick();
+              }} className='key key-white'></button>
+              <button onMouseDown={function () {
+                playSound(F);
+                clickedKey = 'F4';
+                handleClick();
+              }} className='key key-white'></button>
+              <button onMouseDown={function () {
+                playSound(G);
+                clickedKey = 'G4';
+                handleClick();
+              }} className='key key-white'></button>
+              <button onMouseDown={function () {
+                playSound(A3);
+                clickedKey = 'A4';
+                handleClick();
+              }} className='key key-white'></button>
+              <button onMouseDown={function () {
+                playSound(B3);
+                clickedKey = 'B4';
+                handleClick();
+              }} className='key key-white'></button>
+              {(mode == 'white-and-black-keys' || mode == 'with-sharps' || mode == 'with-sharps-and-flats' || mode == 'with-double-sharps-and-double-flats') &&
+                <button onMouseDown={function () {
+                  playSound(C4);
+                  clickedKey = 'C5';
+                  handleClick();
+                }} className='key-white'></button>}
+              {mode == 'with-double-sharps-and-double-flats' &&
+                <button onMouseDown={function () {
+                  playSound(D4);
+                  clickedKey = 'D5';
+                  handleClick();
+                }} className='key-white' id='key-d-next-octave'></button>}
+            </span>
 
-          <span>
-            {
-              mode == 'with-double-sharps-and-double-flats' &&
+            <span>
+              {
+                mode == 'with-double-sharps-and-double-flats' &&
+                <button onMouseDown={function () {
+                  playSound(BFlat2);
+                  clickedKey = 'Bb3';
+                  handleClick();
+                }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='bb-prev-octave'></button>
+              }
               <button onMouseDown={function () {
-                playSound(BFlat2);
-                clickedKey = 'Bb3';
+                playSound(DFlat3);
+                clickedKey = 'Db4';
                 handleClick();
-              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='bb-prev-octave'></button>
-            }
-            <button onMouseDown={function () {
-              playSound(DFlat3);
-              clickedKey = 'Db4';
-              handleClick();
-            }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='db'></button>
-            <button onMouseDown={function () {
-              playSound(EFlat);
-              clickedKey = 'Eb4';
-              handleClick();
-            }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='eb'></button>
-            <button onMouseDown={function () {
-              playSound(GFlat);
-              clickedKey = 'Gb4';
-              handleClick();
-            }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='gb'></button>
-            <button onMouseDown={function () {
-              playSound(AFlat);
-              clickedKey = 'Ab4';
-              handleClick();
-            }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='ab'></button>
-            <button onMouseDown={function () {
-              playSound(BFlat3);
-              clickedKey = 'Bb4';
-              handleClick();
-            }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='bb'></button>
-            {
-              mode == 'with-double-sharps-and-double-flats' &&
+              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='db'></button>
               <button onMouseDown={function () {
-                playSound(DFlat4);
-                clickedKey = 'Db5';
+                playSound(EFlat);
+                clickedKey = 'Eb4';
                 handleClick();
-              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='db-next-octave'></button>
-            }
+              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='eb'></button>
+              <button onMouseDown={function () {
+                playSound(GFlat);
+                clickedKey = 'Gb4';
+                handleClick();
+              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='gb'></button>
+              <button onMouseDown={function () {
+                playSound(AFlat);
+                clickedKey = 'Ab4';
+                handleClick();
+              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='ab'></button>
+              <button onMouseDown={function () {
+                playSound(BFlat3);
+                clickedKey = 'Bb4';
+                handleClick();
+              }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='bb'></button>
+              {
+                mode == 'with-double-sharps-and-double-flats' &&
+                <button onMouseDown={function () {
+                  playSound(DFlat4);
+                  clickedKey = 'Db5';
+                  handleClick();
+                }} className={mode == "with-double-sharps-and-double-flats" ? "key-black wdf" : "key-black"} id='db-next-octave'></button>
+              }
+            </span>
           </span>
-        </span>
-      }
-      <button ref={startBtnRef} className='center btn btn-green' id='btn-start' onClick={function () {
-
-        if (showBtns) {
-          unhide(btnsRef);
-        } else {
-          unhide(keyboardRef);
-          setInterval(updateTimer, 1000);
         }
+        <button ref={startBtnRef} className='center btn btn-green' id='btn-start' onClick={function () {
 
-        hide(startBtnRef);
+          if (showBtns) {
+            unhide(btnsRef);
+          } else {
+            unhide(keyboardRef);
+            setInterval(updateTimer, 1000);
+          }
 
-        handleClick();
-      }}>
-        {language == "russian" ? "Начать" : "Start"}
-      </button>
+          hide(startBtnRef);
+
+          handleClick();
+        }}>
+          {language == "russian" ? "Начать" : "Start"}
+        </button>
+      </span>
     </>
   );
 }

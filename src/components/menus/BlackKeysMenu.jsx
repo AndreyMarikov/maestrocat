@@ -60,7 +60,7 @@ export default function BlackKeysMenu() {
             }
           }
 
-          @media (min-height: 950px) {
+          @media (min-height: 750px) {
             h1 {
               position: static;
               margin-top: 0;

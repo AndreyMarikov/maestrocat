@@ -38,7 +38,7 @@ export default function NoteReadingPage() {
             justify-content: end !important;
           }
 
-          @media (min-height: 950px) {
+          @media (min-height: 750px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -65,7 +65,7 @@ export default function NoteReadingPage() {
       <TurnYourDeviceMessage />
       <Dropdown />
       <span className="center" id="menu-btns">
-        <h1>{language == "russian" ? "Чтение нот" : "Sight-reading"}</h1>
+        <h1>{language == "russian" ? "На время" : "Timed mode"}</h1>
         <Link to={{
           pathname: getPath(),
           search: "?lang=" + language
