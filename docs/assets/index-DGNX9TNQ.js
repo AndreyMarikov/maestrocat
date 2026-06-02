@@ -86,7 +86,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             justify-content: end !important;
           }
 
-          @media (min-height: 750px) {
+          @media (min-height: 800px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -115,7 +115,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             justify-content: end !important;
           }
 
-          @media (min-height: 750px) {
+          @media (min-height: 800px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -126,7 +126,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             justify-content: end !important;
           }
 
-          @media (min-height: 750px) {
+          @media (min-height: 800px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -137,7 +137,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             justify-content: end !important;
           }
 
-          @media (min-height: 750px) {
+          @media (min-height: 800px) {
             h1 {
               position: static;
               margin-top: 0;
@@ -186,7 +186,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             }
           }
 
-          @media (min-height: 750px) {
+          @media (min-height: 800px) {
             h1 {
               position: static;
               margin-top: 0;

@@ -1060,7 +1060,7 @@ h2 {
   left: 100%;
 }
 
-@media (max-height: 750px) {
+@media (max-height: 800px) {
   .note {
     left: 57%;
   }
@@ -1096,7 +1096,7 @@ h2 {
   }
 }
 
-@media screen and (min-height: 700px) and (max-height: 750px) {
+@media screen and (min-height: 700px) and (max-height: 800px) {
   .ledger-line {
     translate: 34px;
   }
@@ -1310,7 +1310,7 @@ h2 {
   flex-direction: column;
 }
 
-@media (min-height: 750px) {
+@media (min-height: 800px) {
   #menu-btns {
     border-radius: 32px;
     max-width: 450px !important;
