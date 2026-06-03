@@ -81,7 +81,7 @@ Please change the parent <Route path="${H}"> to <Route path="${H==="/"?"*":`${H}
             border-top: 3px solid hsl(0, 0%, 85%);
             border-left: 3px solid hsl(0, 0%, 85%);
           }
-        `}),p.jsxs("div",{className:"dropdown",children:[p.jsxs("button",{className:"dropdown-button",onFocus:f,onBlur:d,children:[p.jsx("img",{src:u=="russian"?Pb:Yb,className:"flag"}),p.jsx("p",{style:{fontFamily:"Rubik"},children:u=="russian"?"Русский":"English"}),p.jsx("i",{ref:n,className:"bi bi-caret-down-fill",style:{fontSize:"16px"}})]}),p.jsxs("div",{ref:a,className:"dropdown-menu",style:{opacity:0},children:[p.jsx(rR,{}),p.jsx(sR,{})]})]})]})}localStorage.getItem("lang")||localStorage.setItem("lang","english");function iR(){const[a,n]=on(),s=a.get("lang");return E.useEffect(()=>{a.set("lang",localStorage.getItem("lang")),n(a,{replace:!0})},[]),p.jsxs(p.Fragment,{children:[p.jsx("style",{children:`
+        `}),p.jsxs("div",{className:"dropdown",style:{isolation:"isolate"},children:[p.jsxs("button",{className:"dropdown-button",onFocus:f,onBlur:d,children:[p.jsx("img",{src:u=="russian"?Pb:Yb,className:"flag"}),p.jsx("p",{style:{fontFamily:"Rubik",mixBlendMode:"difference"},children:u=="russian"?"Русский":"English"}),p.jsx("i",{ref:n,className:"bi bi-caret-down-fill",style:{fontSize:"16px"}})]}),p.jsxs("div",{ref:a,className:"dropdown-menu",style:{opacity:0},children:[p.jsx(rR,{}),p.jsx(sR,{})]})]})]})}localStorage.getItem("lang")||localStorage.setItem("lang","english");function iR(){const[a,n]=on(),s=a.get("lang");return E.useEffect(()=>{a.set("lang",localStorage.getItem("lang")),n(a,{replace:!0})},[]),p.jsxs(p.Fragment,{children:[p.jsx("style",{children:`
           #root {
             justify-content: end !important;
           }

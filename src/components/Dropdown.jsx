@@ -108,10 +108,10 @@ function Dropdown() {
           }
         `}
       </style>
-      <div className='dropdown'>
+      <div className='dropdown' style={{ isolation: "isolate" }}>
         <button className="dropdown-button" onFocus={openMenu} onBlur={closeMenu}>
           <img src={language == "russian" ? FlagOfRussia : FlagOfUK} className='flag'></img>
-          <p style={{ fontFamily: "Rubik" }}>{language == "russian" ? "Русский" : "English"}</p>
+          <p style={{ fontFamily: "Rubik", mixBlendMode: "difference" }}>{language == "russian" ? "Русский" : "English"}</p>
           <i ref={caretIconRef} className='bi bi-caret-down-fill' style={{ fontSize: 16 + "px" }}></i>
         </button>
         <div ref={dropDownMenuRef} className='dropdown-menu' style={{ opacity: 0 }}>
