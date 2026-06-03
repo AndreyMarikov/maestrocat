@@ -209,6 +209,12 @@ h2 {
   top: 0;
 }
 
+a {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  user-drag: none;
+}
+
 .sharp-symbol,
 .flat-symbol,
 .double-sharp-symbol,
