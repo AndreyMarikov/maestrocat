@@ -1,7 +1,7 @@
 {
   "name": "maestrocat",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "homepage": "https://andreymarikov.github.io/maestrocat/",
   "scripts": {
