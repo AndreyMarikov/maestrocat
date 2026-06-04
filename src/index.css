@@ -1146,6 +1146,7 @@ h2 {
   #btns .btn {
     height: 70px !important;
     font-size: 30px !important;
+    min-width: 80px !important;
   }
 }
 
@@ -1221,6 +1222,7 @@ h2 {
     font-size: 20px !important;
     padding: 8px;
     padding-inline: 16px;
+    min-width: 60px !important;
   }
 
   #btns {
@@ -1316,6 +1318,12 @@ h2 {
   flex-direction: column;
 }
 
+@media screen and (min-height: 550px) and (max-height: 800px) {
+  #btns .btn {
+    min-width: 100px;
+  }
+}
+
 @media (min-height: 800px) {
   #menu-btns {
     border-radius: 32px;
@@ -1398,6 +1406,7 @@ h2 {
   #btns .btn {
     font-size: 36px;
     height: 90px;
+    min-width: 90px;
   }
 }
 
