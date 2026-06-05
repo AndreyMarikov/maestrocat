@@ -1192,6 +1192,13 @@ h2 {
     position: relative;
     top: 0;
   }
+
+  #btns .btn {
+    font-size: 30px !important;
+    height: 70px !important;
+    min-width: 60px !important;
+    padding-inline: 16px;
+  }
 }
 
 #keyboard {
@@ -1218,15 +1225,15 @@ h2 {
 
 @media (max-height: 330px) {
   #btns .btn {
-    height: 50px !important;
-    font-size: 20px !important;
-    padding: 8px;
-    padding-inline: 16px;
-    min-width: 60px !important;
+    height: 74px !important;
+    font-size: 32px !important;
+    padding-inline: 10px !important;
+    min-width: 84px !important;
   }
 
   #btns {
-    bottom: -20px !important;
+    bottom: 86px !important;
+    position: fixed !important;
   }
 }
 
