@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import Canvas from "./Canvas";
 import { useState } from "react";
 import { Capacitor } from "@capacitor/core";
+import { Filesystem, Directory } from "@capacitor/filesystem";
 
 function ShareButton({ correctAnswers, incorrectAnswers }) {
   const [searchParams] = useSearchParams();
@@ -15,16 +16,18 @@ function ShareButton({ correctAnswers, incorrectAnswers }) {
   }
 
   async function handleImageReady(dataUrl) {
-    const blob = await (await fetch(dataUrl)).blob();
-    const file = new File(
-      [blob],
-      "maestrocat-result.png",
-      { type: "image/png" }
-    );
     const englishText = `I got ${correctAnswers} out of ${correctAnswers + incorrectAnswers} notes correct in MaestroCat. Can you do the same?`;
     const russianText = `Я набрал ${correctAnswers} из ${correctAnswers + incorrectAnswers} правильных ответов в MaestroCat. А сколько наберёшь ты?`;
 
     if (Capacitor.isNativePlatform()) {
+      const base64Data = dataUrl.split(",")[1];
+
+      const savedFile = await Filesystem.writeFile({
+        path: "maestrocat-result.png",
+        data: base64Data,
+        directory: Directory.Cache,
+      });
+
       await Share.share({
         title:
           language === "english"
@@ -36,10 +39,17 @@ function ShareButton({ correctAnswers, incorrectAnswers }) {
             ? englishText
             : russianText,
 
-        files: language == "russian" ? [file] : undefined,
-        url: language == "english" ? "https://andreymarikov.github.io/maestrocat/" : undefined
+        files: language === "russian" ? [savedFile.uri] : undefined,
+        url: language === "english" ? "https://andreymarikov.github.io/maestrocat/" : undefined
       });
     } else {
+      const blob = await (await fetch(dataUrl)).blob();
+      const file = new File(
+        [blob],
+        "maestrocat-result.png",
+        { type: "image/png" }
+      );
+
       await navigator.share({
         title:
           language === "english"
@@ -51,8 +61,8 @@ function ShareButton({ correctAnswers, incorrectAnswers }) {
             ? englishText
             : russianText,
 
-        files: language == "russian" ? [file] : undefined,
-        url: language == "english" ? "https://andreymarikov.github.io/maestrocat/" : undefined
+        files: language === "russian" ? [file] : undefined,
+        url: language === "english" ? "https://andreymarikov.github.io/maestrocat/" : undefined
       });
     }
 
