@@ -29,6 +29,7 @@ import TurnYourDeviceMessage from './TurnYourDeviceMessagePortrait';
 import Kitya from '../assets/kitya.gif';
 import Music from '../assets/praia-de-domingo.mp3';
 import Ambience from '../assets/forest-ambience.mp3';
+import ShareButton from './ShareButton';
 
 export default function TwoLineOctavePage() {
   const btnsRef = useRef(null);
@@ -460,7 +461,10 @@ export default function TwoLineOctavePage() {
         <span style={{ position: "fixed", top: 0, gap: 24 + "px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <h1 style={{ position: "static", width: "100%" }}>{language == "russian" ? "Время вышло" : "Time is up"}!</h1>
           <span>
-            <Link to='/' className='btn btn-orange' style={{ bottom: 44 + 8 + "px", width: 240 + "px" }}>{language == "russian" ? "Вернуться в меню" : "Go back to menu"}</Link>
+            <span style={{ display: "flex", gap: 8 + "px", height: 66 + "px" }}>
+              <ShareButton correctAnswers={correctAnswersRef.current} incorrectAnswers={incorrectAnswersRef.current} />
+              <Link to='/' className='btn btn-orange go-back-button' style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>{language == "russian" ? "Вернуться в меню" : "Go back to menu"}</Link>
+            </span>
             <span id='answers' style={{ position: "fixed", bottom: 0, left: 0, width: 100 + "%" }}>
               <h2 style={{ marginBottom: 0 }}>{language == "russian" ? "Правильных ответов" : "Correct answers"}: {correctAnswersRef.current}</h2>
               <h2>{language == "russian" ? "Неправильных ответов" : "Incorrect answers"}: {incorrectAnswersRef.current}</h2>

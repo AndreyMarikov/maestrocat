@@ -336,7 +336,7 @@ export default function OneLineOctavePage() {
     currentNoteRef = noteRef;
   }
 
-  const startingMinutes = 0.1;
+  const startingMinutes = 1;
   let time = startingMinutes * 60;
   let [count, setCount] = useState(0);
   const forceUpdate = () => {
