@@ -26,7 +26,7 @@ function MyCanvasComponent({
 
       const font = new FontFace(
         "Nunito",
-        "url(/maestrocat/src/assets/Nunito-ExtraBold.ttf)"
+        "url(/maestrocat/Nunito-ExtraBold.ttf)"
       );
 
       await font.load();
