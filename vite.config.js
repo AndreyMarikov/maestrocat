@@ -17,4 +17,7 @@ export default defineConfig({
   build: {
     outDir: "docs",
   },
+  server: {
+    allowedHosts: ["tip-greatest-supplements-club.trycloudflare.com"]
+  }
 })

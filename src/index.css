@@ -11,7 +11,7 @@
   --bluish-gray: hsl(240, 10%, 10%);
   --clef-size: 99px;
   --border: 2px solid var(--gray30);
-  --green23: hsl(100, 76%, 35%);
+  --green23: hsl(100, 76%, 38%);
   --green30: hsl(100, 72%, 45%);
   --green33: hsl(100, 100%, 33%);
   --green38: hsl(100, 100%, 38%);
@@ -1150,7 +1150,6 @@ h2 {
   }
 }
 
-
 .message::after {
   display: block;
 }
@@ -1484,58 +1483,22 @@ h2:last-child {
   width: 50%;
 }
 
-/*
-@media (max-width: 785px) {
-  .key-white {
-    height: 100px;
-    width: 54px;
+@media (max-height: 350px) {
+  .time-is-up-msg h1 {
+    margin-bottom: 10px;
   }
 
-
-
-  .key-black#db {
-    left: 54px;
-  }
-
-  .key-black#eb {
-    left: calc(54px * 2);
-  }
-
-  .key-black#gb {
-    left: calc(54px * 4);
-  }
-
-  .key-black#ab {
-    left: calc(54px * 5);
-  }
-
-  .key-black#bb {
-    left: calc(54px * 6);
-  }
-
-  .key-black#bb-prev-octave {
-    left: calc(54px * -1);
-  }
-
-  .key-black#db-next-octave {
-    left: calc(54px * 8);
-  }
-
-  #key-b4,
-  #key-b3,
-  #key-b2,
-  #key-b1 {
-    position: absolute;
-    left: -54px;
-  }
-
-  #key-a-prev-octave {
-    left: calc(54px * -2);
-  }
-
-  .key-black {
-    width: 42px;
-    height: 66px;
+  .time-is-up-msg h2 {
+    margin-top: 4px;
   }
 }
-*/
+
+.share-button:active {
+  margin-top: 16px;
+}
+
+.go-back-button:active {
+  position: relative;
+  top: 0 !important;
+  margin-top: 16px;
+}

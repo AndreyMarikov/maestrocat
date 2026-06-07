@@ -456,7 +456,7 @@ export default function TwoLineOctavePage() {
         `}
       </style>
       <TurnYourDeviceMessage />
-      <span ref={timeIsUpMessageRef} className='hidden warning-message center'>
+      <span ref={timeIsUpMessageRef} className='hidden warning-message time-is-up-msg center'>
         <span style={{ position: "fixed", top: 0, gap: 24 + "px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <h1 style={{ position: "static", width: "100%" }}>{language == "russian" ? "Время вышло" : "Time is up"}!</h1>
           <span>
