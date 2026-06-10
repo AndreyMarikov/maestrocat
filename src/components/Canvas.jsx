@@ -1,63 +1,89 @@
 import { useRef, useEffect } from "react";
 
-function MyCanvasComponent({
-  correctAnswers,
-  incorrectAnswers,
-  createImage,
-  onImageReady,
-}) {
+// ─── Module-level asset cache ────────────────────────────────────────────────
+// Loading starts the moment this module is imported (app startup), so by the
+// time the game ends and Canvas mounts, both promises are already resolved.
+
+let imagePromise = null;
+let fontPromise = null;
+
+function getImage() {
+  if (!imagePromise) {
+    imagePromise = new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => {
+        imagePromise = null; // allow retry on failure
+        reject(new Error("Failed to load card.png"));
+      };
+      img.src = "/maestrocat/card.png";
+    });
+  }
+  return imagePromise;
+}
+
+function getFont() {
+  if (!fontPromise) {
+    fontPromise = new FontFace("Nunito", "url(/maestrocat/Nunito-ExtraBold.ttf)")
+      .load()
+      .then(font => {
+        document.fonts.add(font);
+      })
+      .catch(err => {
+        fontPromise = null; // allow retry on failure
+        throw err;
+      });
+  }
+  return fontPromise;
+}
+
+// Kick off loading immediately on import
+getImage();
+getFont();
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+function Canvas({ correctAnswers, incorrectAnswers, createImage, onImageReady }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     if (!createImage) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    let cancelled = false;
 
-    const img = new Image();
+    // By the time this runs, getImage() and getFont() are almost certainly
+    // already resolved — Promise.all() returns in the same microtask tick.
+    Promise.all([getImage(), getFont()])
+      .then(([img]) => {
+        if (cancelled) return;
 
-    img.onload = async () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
+        canvas.width = img.width;
+        canvas.height = img.height;
 
-      ctx.drawImage(img, 0, 0);
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        ctx.font = "bold 80px Nunito";
+        ctx.fillStyle = "white";
 
-      const font = new FontFace(
-        "Nunito",
-        "url(/maestrocat/Nunito-ExtraBold.ttf)"
-      );
+        const total = correctAnswers + incorrectAnswers;
+        const percent = total > 0
+          ? Math.round((correctAnswers / total) * 100)
+          : 0;
+        const x = 190;
 
-      await font.load();
-      document.fonts.add(font);
+        ctx.fillText(String(correctAnswers), x, 565);
+        ctx.fillText(String(incorrectAnswers), x, 747);
+        ctx.fillText(`${percent}%`, x, 928);
 
-      ctx.font = "bold 80px Nunito";
-      ctx.fillStyle = "white";
+        // toDataURL is synchronous — no requestAnimationFrame needed
+        onImageReady?.(canvas.toDataURL("image/png"));
+      })
+      .catch(err => console.error("Canvas generation failed:", err));
 
-      const x = 190;
-
-      ctx.fillText(String(correctAnswers), x, 565);
-      ctx.fillText(String(incorrectAnswers), x, 747);
-
-      const percent = Math.round(
-        (correctAnswers / (correctAnswers + incorrectAnswers)) * 100
-      );
-
-      ctx.fillText(percent + "%", x, 928);
-
-      requestAnimationFrame(() => {
-        const dataUrl = canvas.toDataURL("image/png");
-        onImageReady?.(dataUrl);
-      });
-    };
-
-    img.onerror = () => {
-      console.error("Failed to load image");
-    };
-
-    img.src = "/maestrocat/card.png";
-  }, [createImage]);
+    return () => { cancelled = true; };
+  }, [createImage, correctAnswers, incorrectAnswers, onImageReady]);
 
   return (
     <canvas
@@ -67,4 +93,4 @@ function MyCanvasComponent({
   );
 }
 
-export default MyCanvasComponent;
+export default Canvas;

@@ -26,7 +26,7 @@ import FlatSymbol from '../assets/Flat.svg';
 import DoubleSharpSymbol from '../assets/Double_sharp.svg';
 import DoubleFlatSymbol from '../assets/Double_flat.svg';
 import TurnYourDeviceMessage from './TurnYourDeviceMessagePortrait';
-import Kitya from '../assets/kitya.gif';
+import Cat from '../assets/cat.gif';
 import Music from '../assets/praia-de-domingo.mp3';
 import Ambience from '../assets/forest-ambience.mp3';
 import ShareButton from './ShareButton';
@@ -79,6 +79,7 @@ export default function SmallOctavePage() {
   const wellDoneMessageRef = useRef(null);
   const oopsMessageRef = useRef(null);
   const timeIsUpMessageRef = useRef(null);
+  const intervalRef = useRef(null);
 
   const randint = (x) => {
     return Math.floor(Math.random() * (x + 1));
@@ -335,6 +336,8 @@ export default function SmallOctavePage() {
   const startingMinutes = 1;
   let time = startingMinutes * 60;
 
+  const [finalStats, setFinalStats] = useState(null);
+
   let [count, setCount] = useState(0);
   const forceUpdate = () => {
     setCount(count => count + 1);
@@ -351,7 +354,13 @@ export default function SmallOctavePage() {
     if (minutes == 0 && seconds == 0) {
       timerRef.current.innerText = '0:00';
       timeIsUpMessageRef.current.classList.remove('hidden');
-      forceUpdate();
+      // Stop the interval so it doesn't keep firing after 0:00
+      clearInterval(intervalRef.current);
+      // Capture final counts in state — mounts <ShareButton> with correct values
+      setFinalStats({
+        correct: correctAnswersRef.current,
+        incorrect: incorrectAnswersRef.current,
+      });
       return;
     }
 
@@ -455,12 +464,23 @@ export default function SmallOctavePage() {
           <h1 style={{ position: "static", width: "100%" }}>{language == "russian" ? "Время вышло" : "Time is up"}!</h1>
           <span>
             <span style={{ display: "flex", gap: 8 + "px", height: 66 + "px" }}>
-              <ShareButton correctAnswers={correctAnswersRef.current} incorrectAnswers={incorrectAnswersRef.current} />
+              {/*
+                ShareButton only mounts once the game ends with the real final
+                values — never with the placeholder 0/0 from initial render.
+                Canvas starts generating the image immediately on mount, so
+                the image is ready long before the user taps the button.
+              */}
+              {finalStats && (
+                <ShareButton
+                  correctAnswers={finalStats.correct}
+                  incorrectAnswers={finalStats.incorrect}
+                />
+              )}
               <Link to='/' className='btn btn-orange go-back-button' style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>{language == "russian" ? "Вернуться в меню" : "Go back to menu"}</Link>
             </span>
             <span id='answers' style={{ position: "fixed", bottom: 0, left: 0, width: 100 + "%" }}>
-              <h2 style={{ marginBottom: 0 }}>{language == "russian" ? "Правильных ответов" : "Correct answers"}: {correctAnswersRef.current}</h2>
-              <h2>{language == "russian" ? "Неправильных ответов" : "Incorrect answers"}: {incorrectAnswersRef.current}</h2>
+              <h2 style={{ marginBottom: 0 }}>{language == "russian" ? "Правильных ответов" : "Correct answers"}: {finalStats?.correct ?? 0}</h2>
+              <h2>{language == "russian" ? "Неправильных ответов" : "Incorrect answers"}: {finalStats?.incorrect ?? 0}</h2>
             </span>
           </span>
         </span>
@@ -481,7 +501,7 @@ export default function SmallOctavePage() {
         </header>
         <span className='center' id='staff-wrapper'>
           <span style={{ "position": "relative" }}>
-            <img className="cat-image" src={Kitya}></img>
+            <img className="cat-image" src={Cat}></img>
             <span ref={oopsMessageRef} className='message center hidden' id='message1'>
               {language == "russian" ? "Упс" : "Whoops"}...
             </span>

@@ -18,6 +18,6 @@ export default defineConfig({
     outDir: "docs",
   },
   server: {
-    allowedHosts: ["tip-greatest-supplements-club.trycloudflare.com"]
+    allowedHosts: ["structures-instruments-monitor-jill.trycloudflare.com"]
   }
 })
