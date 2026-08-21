@@ -3,8 +3,8 @@ import TurnYourDeviceMessage from "../TurnYourDeviceMessageLandscape";
 import Dropdown from '../Dropdown';
 import { useEffect } from 'react';
 import Footer from '../Footer';
-import Logo from "../../assets/logo.png";
 import ShareButton from "../ShareButton";
+import Notification from "../Notification";
 
 if (!localStorage.getItem("lang")) {
   localStorage.setItem("lang", "english");
@@ -55,6 +55,7 @@ export default function OctaveMenu() {
       </style>
       <TurnYourDeviceMessage />
       <Dropdown />
+      {/* <Notification /> */}
       {language == "russian" ? <span className='center' id='menu-btns'><h1>Выберите октаву</h1><Link to={{
         pathname: '/mode',
         search: '?octave=one-line&lang=' + language
@@ -78,23 +79,6 @@ export default function OctaveMenu() {
             pathname: '/mode',
             search: '?octave=great&lang=' + language
           }} className="btn btn-red btn-menu"><p style={{ position: "absolute" }}>&#119074;</p>Большая октава<div></div></Link>
-          {/*
-          <div className='hr'>
-            <p style={{
-              position: "absolute",
-              transform: "translate(-50%, -50%)",
-              left: 50 + "%",
-              backgroundColor: "var(--white)",
-              paddingInline: 10 + "px",
-              fontWeight: 500,
-              textTransform: "uppercase",
-            }}>{language == "english" ? "or" : "или"}</p>
-          </div>
-          <Link to={{
-            pathname: '/mode',
-            search: '?octave=great&lang=' + language
-          }} className="btn btn-purple btn-menu"><i className='fas fa-book-open' style={{ position: "absolute", left: 24 + "px", alignSelf: "center" }}></i>{language == "english" ? "Learn Theory" : "Учить теорию"}<div></div></Link>
-          */}
         </div></span> : <span className='center' id='menu-btns'><h1>Choose note range</h1><Link to={{
           pathname: '/mode',
           search: '?octave=great&lang=' + language

@@ -3,5 +3,6 @@
   "appName": "MaestroCat",
   "server": {
     "url": "https://andreymarikov.github.io/maestrocat/#/"
-  }
+  },
+  "webDir": "docs"
 }
